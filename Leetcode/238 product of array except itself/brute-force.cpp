@@ -18,7 +18,6 @@ vector<int> productExceptSelf(vector<int>& nums) {
 int main() {
     vector<int> nums = {1, 2, 3, 4};
     vector<int> result = productExceptSelf(nums);
-    
     cout << "Product of array except itself: ";
     for(int num : result) {
         cout << num << " ";
