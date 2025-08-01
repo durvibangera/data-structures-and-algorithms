@@ -18,7 +18,6 @@ int majorityElement(vector<int>& nums) {
     }
     return ans;
 }
-
 int main() {
     vector<int> nums = {1,2,2,1,1};
     int result = majorityElement(nums);
