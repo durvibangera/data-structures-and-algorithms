@@ -48,6 +48,66 @@ public:
             tail = newNode;
         }
     }
+
+    void pop_front(){
+        if(head == NULL){
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        temp->next = NULL;
+        delete temp;
+    }
+
+    void pop_back(){
+        if(head == NULL){
+            cout << "List is empty" << endl;
+            return;
+        }
+        Node* temp = head;
+        while(temp->next != tail){
+            temp = temp->next;
+        }
+        tail->next = NULL;
+        delete tail;
+        tail = temp;
+    }
+
+    void insert(int val, int pos){
+        if(pos<0){
+            return;
+        }
+        if(pos == 0){
+            push_front(val);
+            return;
+        }
+        Node* newNode = new Node(val);
+        Node* temp = head;
+        for(int i=0; i<pos-1; i++){
+            if(temp == NULL){
+                cout << "pos out of bounds" << endl;
+                delete newNode;
+                return;
+            }
+            temp = temp->next;
+        }
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
+
+    int search(int key){
+        Node* temp = head;
+        int pos = 0;
+        while(temp != NULL){
+            if(temp->data == key){
+                return pos;
+            }
+            temp = temp->next;
+            pos++;
+        }
+        return -1;
+    }
 };
 
 int main() {
@@ -57,6 +117,7 @@ int main() {
     ll.push_front(20);
     ll.push_front(30);
     ll.push_back(40);
+    ll.insert(25, 2);
     ll.printLL();
     return 0;
 }
